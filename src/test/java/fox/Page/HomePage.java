@@ -21,7 +21,7 @@ public class HomePage {
 
     //Sign In Locators
     private By SignIn_Button_Xpath= By.xpath("//button[text()='Sign In']");
-    private By SignInEmial_Input_Name = By.name("signinEmail");
+    private By SignInEmail_Input_Name = By.name("signinEmail");
     private By SignInPassword_Input_Name = By.name("signinPassword");
     private By SignInConfirm_Button_Xpath=By.xpath("//div[@class='Account_signinButtonDesktop_2SO1g']/button");
 
@@ -93,7 +93,7 @@ public class HomePage {
 
     public void signIn(String email,String password){
         navigationHelper.clickElement(SignIn_Button_Xpath);
-        navigationHelper.input(SignInEmial_Input_Name,email);
+        navigationHelper.input(SignInEmail_Input_Name, email);
         navigationHelper.input(SignInPassword_Input_Name,password);
         navigationHelper.clickElement(SignInConfirm_Button_Xpath);
         assert navigationHelper.isElementPresent(UserIconAccount_Button_Xpath);
