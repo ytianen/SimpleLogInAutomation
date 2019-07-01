@@ -18,7 +18,12 @@ public class NavigationHelper {
     }
 
     public NavigationHelper(){
-        System.setProperty("webdriver.gecko.driver","src/test/resources/drivers/geckodriver.exe");
+        if(System.getProperty("os.name").toLowerCase().contains("windows")){
+            System.setProperty("webdriver.gecko.driver","src/test/resources/drivers/geckodriver.exe");
+        }
+        else{
+            System.setProperty("webdriver.gecko.driver", "src/test/resources/drivers/geckodriver");
+        }
         System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE, "true");
         System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, "/dev/null");
         driver = new FirefoxDriver();
@@ -41,8 +46,10 @@ public class NavigationHelper {
     }
 
     public boolean isElementPresent(By locator){
+
         log.debug("Looking for "+locator.toString());
-        WebElement element = (new WebDriverWait(driver,20)).until(ExpectedConditions.presenceOfElementLocated(locator));
+        WebDriverWait wait = new WebDriverWait(driver,5);
+        WebElement element = wait.until(ExpectedConditions.visibilityOf(driver.findElement(locator)));
             return element!=null;
     }
 
