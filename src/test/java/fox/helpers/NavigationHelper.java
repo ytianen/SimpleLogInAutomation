@@ -24,11 +24,11 @@ public class NavigationHelper {
     // Wait time to check if an element exists
     private static final int ELEMENT_EXISTS_WAIT_TIME = 5;
 
-    public WebDriver getWebDriver(){
-        return this.driver;
+    public static WebDriver getWebDriver(){
+        return driver;
     }
 
-    public NavigationHelper(){
+    public static void init(){
 
         //Setting driver path by OS
         if(System.getProperty("os.name").toLowerCase().contains("windows")){

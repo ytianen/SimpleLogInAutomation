@@ -13,6 +13,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
+import static fox.helpers.NavigationHelper.*;
 
 
 public class CreateAccountSteps {
@@ -21,13 +22,14 @@ public class CreateAccountSteps {
 
     @Before
     public void testStartUp() {
-        homePage = new HomePage();
+       homePage = new HomePage();
+        init();
     }
 
     @After
     public void testShutDown(Scenario scenario){
         log.info("Test shutting down.");
-        WebDriver driver = homePage.navigationHelper.getWebDriver();
+        WebDriver driver = getWebDriver();
         if(scenario.isFailed()){
             byte[] screenshot= ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
             scenario.embed(screenshot,"image/png");
@@ -36,7 +38,7 @@ public class CreateAccountSteps {
         else{
             scenario.write("Scenario: passed");
         }
-        driver.quit();
+        getWebDriver().quit();
     }
 
 

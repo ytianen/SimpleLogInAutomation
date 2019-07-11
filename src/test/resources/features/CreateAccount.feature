@@ -15,6 +15,6 @@ Feature: Create New Account
     Then click the Done button
     And clean up by deleting the profile
 
-    Examples: 
+    Examples:
       | First Name | Last Name  | Password    | Gender | Birthdate   |Email               |
       | Testfirst  | Testlast   | password222 | Male   | 01/01/1990  |amami05301@gmail.com|
